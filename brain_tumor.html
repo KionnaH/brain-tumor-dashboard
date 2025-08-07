@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/brain_tumor.html"> <h1 class="project-title" >Brain Tumor Dashboard</h1> </a>
+        <p class="team-name">Medical Tech Analysts</p>
+    </header>
+
+    <!-- Team Members -->
+    <div class="team-members">
+        Team Members: Tenzin Micky, Denzel Green, Kionna Hughes, Michael Valenzuela
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#tumor-type-avg">Tumor Type</a>
+        <a href="#tumor-grade-avg">Tumor Grade</a>
+        <a href="#age-survival">Age & Survival</a>
+        <a href="#tumor-location">Tumor Location</a>
+        <a href="#treatment-outcome">Treatment Outcome</a>
+        <a href="#tumor-type-distribution">Type Distribution</a>
+        <a href="/statistics.html">Statistics</a>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <!-- Gender Filter -->
+        <div id="filter-div">
+            <label for="gender-filter"><strong>Filter by Gender:</strong></label>
+            <select id="gender-filter">
+                <option value="all">All</option>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+        </div>
+
+        <!-- Charts -->
+        <div class="chart-container" id="tumor-type-avg">
+            <h2>Tumor Type vs. Average Survival Time</h2>
+        </div>
+        <div class="chart-container" id="tumor-grade-avg">
+            <h2>Tumor Grade vs. Average Survival Time</h2>
+        </div>
+        <div class="chart-container" id="age-survival">
+            <h2>Age vs Survival Time</h2>
+        </div>
+        <div class="chart-container" id="tumor-location">
+            <h2>Tumor Location Distribution</h2>
+        </div>
+        <div class="chart-container" id="treatment-outcome">
+            <h2>Treatment Outcome Distribution</h2>
+        </div>
+        <div class="chart-container" id="tumor-type-distribution">
+            <h2>Tumor Type Distribution</h2>
+        </div>
+    </main>
+
+    <script src="analyze_tumor_data.js"></script>
+</body>
+
+</html>

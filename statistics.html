@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+            stroke-width: 2px;
+        }
+
+        .link.highlight {
+            stroke: #ff6347;
+            stroke-width: 3px;
+        }
+
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            width: auto;
+            padding: 8px;
+            font-size: 12px;
+            background: #f8f8f8;
+            border: 1px solid #333;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        text {
+            font-size: 12px;
+            fill: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/brain_tumor.html"> <h1 class="project-title">Brain Tumor Dashboard</h1> </a>
+        <p class="team-name">Medical Tech Analysts</p>
+    </header>
+
+    <!-- Team Members -->
+    <div class="team-members">
+        Team Members: Tenzin Micky, Denzel Green, Kionna Hughes, Michael Valenzuela
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/brain_tumor.html#tumor-type-avg">Tumor Type</a>
+        <a href="/brain_tumor.html#tumor-grade-avg">Tumor Grade</a>
+        <a href="/brain_tumor.html#age-survival">Age & Survival</a>
+        <a href="/brain_tumor.html#tumor-location">Tumor Location</a>
+        <a href="/brain_tumor.html#treatment-outcome">Treatment Outcome</a>
+        <a href="/brain_tumor.html#tumor-type-distribution">Type Distribution</a>
+        <a href="/statistics.html">Statistics</a>
+    </nav>
+
+    <!-- Analysis Section -->
+    <main>
+        <div id="analysis-section" class="analysis-container">
+            <h2>Detailed Analysis</h2>
+
+            <h3>Tumor Type Analysis</h3>
+            <ul>
+                <li><strong>Tumor Type Distribution:</strong></li>
+                <ul>
+                    <li><strong>Meningioma:</strong> 710 cases</li>
+                    <li><strong>Astrocytoma:</strong> 653 cases</li>
+                    <li><strong>Glioblastoma:</strong> 637 cases</li>
+                </ul>
+                <li><strong>Tumor Type vs. Survival Time (Prognosis):</strong></li>
+                <ul>
+                    <li><strong>Meningioma:</strong> 37.47 months</li>
+                    <li><strong>Astrocytoma:</strong> 33.46 months</li>
+                    <li><strong>Glioblastoma:</strong> 31.53 months</li>
+                </ul>
+            </ul>
+
+            <h3>Tumor Grade Analysis</h3>
+            <ul>
+                <li><strong>Tumor Grade vs. Survival Time:</strong></li>
+                <ul>
+                    <li><strong>Grade I:</strong> Avg: 37.47 months | Median: 36 months</li>
+                    <li><strong>Grade II:</strong> Avg: 34.45 months | Median: 36 months</li>
+                    <li><strong>Grade III:</strong> Avg: 32.35 months | Median: 36 months</li>
+                    <li><strong>Grade IV:</strong> Avg: 31.51 months | Median: 30 months</li>
+                </ul>
+            </ul>
+
+            <h3>Age Analysis</h3>
+            <ul>
+                <li><strong>Age Distribution:</strong></li>
+                <ul>
+                    <li>Significant patient count between ages <strong>50–60</strong> (1,086 cases).</li>
+                    <li>Ages <strong>70–80</strong> show higher survival times (41 months).</li>
+                </ul>
+                <li><strong>Age vs. Tumor Type:</strong></li>
+                <ul>
+                    <li><strong>Astrocytoma:</strong> Ages 40–50 (138 cases, 34.5 months).</li>
+                    <li><strong>Glioblastoma:</strong> Ages 40–50 (142 cases, 30.9 months).</li>
+                    <li><strong>Meningioma:</strong> Ages 50–60 (256 cases, 37.1 months).</li>
+                </ul>
+            </ul>
+
+            <h3>Survival Analysis by Gender</h3>
+            <ul>
+                <li><strong>Astrocytoma:</strong></li>
+                <ul>
+                    <li><strong>Male:</strong> Avg Survival: 35.3 months (321 cases)</li>
+                    <li><strong>Female:</strong> Avg Survival: 31.7 months (332 cases)</li>
+                </ul>
+                <li><strong>Glioblastoma:</strong></li>
+                <ul>
+                    <li><strong>Male:</strong> Avg Survival: 32.5 months (340 cases)</li>
+                    <li><strong>Female:</strong> Avg Survival: 30.4 months (297 cases)</li>
+                </ul>
+                <li><strong>Meningioma:</strong></li>
+                <ul>
+                    <li><strong>Male:</strong> Avg Survival: 37.6 months (332 cases)</li>
+                    <li><strong>Female:</strong> Avg Survival: 37.3 months (378 cases)</li>
+                </ul>
+            </ul>
+
+            <h3>Recurrence Patterns</h3>
+            <ul>
+                <li><strong>Astrocytoma:</strong> Avg Recurrence Time: 15.3 months | Most Common Site: Occipital lobe</li>
+                <li><strong>Glioblastoma:</strong> Avg Recurrence Time: 11.7 months | Most Common Site: Parietal lobe</li>
+                <li><strong>Meningioma:</strong> Avg Recurrence Time: 8.0 months | Most Common Site: None reported</li>
+            </ul>
+
+            <h3>Key Insights</h3>
+            <ul>
+                <li><strong>Meningioma treated with surgery and radiation shows the most success,</strong> with a complete response and average survival time of <strong>40.4 months</strong>.</li>
+                <li><strong>Astrocytoma has the longest survival time with surgery-only treatments</strong> (66 months), highlighting its potential for recovery under aggressive care.</li>
+                <li><strong>Glioblastoma is the most difficult tumor type,</strong> with the shortest survival times and higher rates of disease progression.</li>
+                <li><strong>Recurrence patterns</strong> indicate quicker recurrence for Glioblastoma and Astrocytoma compared to Meningioma.</li>
+            </ul>
+
+            <h2>Treatment and Outcome Visualization</h2>
+            <div id="graph" style="width: 100%; height: 800px; position: relative;"></div>
+            <div id="legend" class="legend"></div>
+
+            <p><strong>Graph Explanation:</strong> This force-directed graph visualizes relationships between tumor types, treatment pathways, and outcomes. Nodes represent tumor types, treatments, and outcomes, while the links indicate the survival times for different treatments.</p>
+
+            <script>
+                const data = [
+                    { id: "Meningioma", group: "Tumor Type", size: 30, description: "710 cases, Avg Survival: 37.4 months" },
+                    { id: "Astrocytoma", group: "Tumor Type", size: 30, description: "653 cases, Avg Survival: 33.4 months" },
+                    { id: "Glioblastoma", group: "Tumor Type", size: 30, description: "637 cases, Avg Survival: 31.5 months" },
+                    { id: "Surgery + Radiation", group: "Treatment", size: 20, description: "Combination treatment for better outcomes" },
+                    { id: "Surgery", group: "Treatment", size: 20, description: "Surgical intervention yields high survival" },
+                    { id: "Chemotherapy", group: "Treatment", size: 20, description: "Used for progressive disease control" },
+                    { id: "Complete Response", group: "Outcome", size: 15, description: "Full recovery with no signs of disease" },
+                    { id: "Partial Response", group: "Outcome", size: 15, description: "Significant reduction in tumor size" },
+                    { id: "Progressive Disease", group: "Outcome", size: 15, description: "Disease progression despite treatment" },
+                    { id: "Stable Disease", group: "Outcome", size: 15, description: "No significant change in disease state" }
+                ];
+
+                const links = [
+                    { source: "Meningioma", target: "Surgery + Radiation", label: "40 months" },
+                    { source: "Astrocytoma", target: "Surgery", label: "66 months" },
+                    { source: "Astrocytoma", target: "Surgery + Radiation", label: "33 months" },
+                    { source: "Glioblastoma", target: "Surgery + Radiation", label: "32 months" },
+                    { source: "Glioblastoma", target: "Chemotherapy", label: "30 months" },
+                    { source: "Surgery + Radiation", target: "Complete Response", label: "Best Outcome" },
+                    { source: "Surgery", target: "Complete Response", label: "Best Outcome" },
+                    { source: "Chemotherapy", target: "Stable Disease", label: "Moderate Outcome" },
+                    { source: "Surgery + Radiation", target: "Progressive Disease", label: "Poor Outcome" }
+                ];
+
+                const width = 1200;
+                const height = 800;
+
+                const svg = d3.select("#graph")
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+                const tooltip = d3.select("#graph")
+                    .append("div")
+                    .attr("class", "tooltip");
+
+                const simulation = d3.forceSimulation(data)
+                    .force("link", d3.forceLink(links).id(d => d.id).distance(150))
+                    .force("charge", d3.forceManyBody().strength(-300))
+                    .force("center", d3.forceCenter(width / 2, height / 2));
+
+                const link = svg.selectAll("line")
+                    .data(links)
+                    .enter()
+                    .append("line")
+                    .attr("class", "link")
+                    .on("mouseover", function (event, d) {
+                        d3.select(this).classed("highlight", true);
+                        tooltip.style("opacity", 1)
+                            .html(`<strong>Link:</strong> ${d.source.id} → ${d.target.id}<br><strong>Survival Time:</strong> ${d.label}`)
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 30) + "px");
+                    })
+                    .on("mouseout", function () {
+                        d3.select(this).classed("highlight", false);
+                        tooltip.style("opacity", 0);
+                    });
+
+                const node = svg.selectAll("circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("r", d => d.size)
+                    .attr("fill", d => color(d.group))
+                    .on("mouseover", function (event, d) {
+                        tooltip.style("opacity", 1)
+                            .html(`<strong>Node:</strong> ${d.id}<br><strong>Group:</strong> ${d.group}<br><strong>Details:</strong> ${d.description}`)
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 30) + "px");
+                    })
+                    .on("mouseout", () => tooltip.style("opacity", 0));
+
+                const nodeLabels = svg.selectAll(".node-label")
+                    .data(data)
+                    .enter()
+                    .append("text")
+                    .attr("class", "node-label")
+                    .text(d => d.id)
+                    .style("font-size", "12px")
+                    .style("text-anchor", "middle")
+                    .style("fill", "#333");
+
+                const linkLabels = svg.selectAll(".link-label")
+                    .data(links)
+                    .enter()
+                    .append("text")
+                    .attr("class", "link-label")
+                    .text(d => d.label)
+                    .style("font-size", "10px")
+                    .style("fill", "#555");
+
+                simulation.nodes(data).on("tick", () => {
+                    link
+                        .attr("x1", d => d.source.x)
+                        .attr("y1", d => d.source.y)
+                        .attr("x2", d => d.target.x)
+                        .attr("y2", d => d.target.y);
+
+                    node
+                        .attr("cx", d => d.x)
+                        .attr("cy", d => d.y);
+
+                    nodeLabels
+                        .attr("x", d => d.x)
+                        .attr("y", d => d.y - 10);
+
+                    linkLabels
+                        .attr("x", d => (d.source.x + d.target.x) / 2)
+                        .attr("y", d => (d.source.y + d.target.y) / 2);
+                });
+
+                simulation.force("link").links(links);
+            </script>
+        </div>
+    </main>
+</body>
+</html>
